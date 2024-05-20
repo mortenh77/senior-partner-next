@@ -5,17 +5,23 @@ import styles from "./page.module.css";
 import Chat from "../../components/chat";
 import WeatherWidget from "../../components/weather-widget";
 import { getWeather } from "../../utils/weather";
+import { getCompanyInfo } from "../../utils/brreg";
 import FileViewer from "../../components/file-viewer";
 
 const FunctionCalling = () => {
   const [weatherData, setWeatherData] = useState({});
 
   const functionCallHandler = async (call) => {
-    if (call?.function?.name !== "get_weather") return;
-    const args = JSON.parse(call.function.arguments);
-    const data = getWeather(args.location);
-    setWeatherData(data);
-    return JSON.stringify(data);
+    if (call?.function?.name === "get_weather") {
+      const args = JSON.parse(call.function.arguments);
+      const data = getWeather(args.location);
+      setWeatherData(data);
+      return JSON.stringify(data);
+    } else if (call?.function?.name === "get_company_info") {
+      const args = JSON.parse(call.function.arguments);
+      const data = await getCompanyInfo(args.name);
+      return JSON.stringify(data);
+    }
   };
 
   // return (
