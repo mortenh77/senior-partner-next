@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import styles from "../shared/page.module.css";
 import Chat from "../../components/chat";
-import WeatherWidget from "../../components/weather-widget";
+import WeatherWidget from "../../components/company-widget";
 import { getWeather } from "../../utils/weather";
 import { getCompanyInfo } from "../../utils/brreg";
 import { RequiredActionFunctionToolCall } from "openai/resources/beta/threads/runs/runs";
