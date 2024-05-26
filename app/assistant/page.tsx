@@ -2,11 +2,10 @@
 
 import React, { useState } from "react";
 import styles from "./page.module.css";
-import Chat from "../../components/chat";
-import WeatherWidget from "../../components/company-widget";
+import Chat from "../components/chat";
 import { getCompanyInfo } from '@/app/utils/brreg';
-import FileViewer from "../../components/file-viewer";
-import CompanyWidget from "../../components/company-widget";
+import FileViewer from "../components/file-viewer";
+import CompanyWidget from "../components/company-widget";
 
 const FunctionCalling = () => {
   const [companyData, setCompanyData] = useState({});
@@ -17,7 +16,7 @@ const FunctionCalling = () => {
       const data = await getCompanyInfo(args.name);
       setCompanyData(data);
       return JSON.stringify(data);
-    } else if (call?.function?.name === "get_company_info") {
+    } else if (call?.function?.name === "o") {
 
     }
   };
